@@ -10,11 +10,11 @@
             Longitude = longitude;
         }
 
-        public double Latitude { get; set; }
+        public double Latitude { get; }
 
-        public double Longitude { get; set; }
+        public double Longitude { get; }
 
-        protected bool Equals(GeoCoordinate other)
+        private bool Equals(GeoCoordinate other)
         {
             return Latitude.Equals(other.Latitude) && Longitude.Equals(other.Longitude);
         }

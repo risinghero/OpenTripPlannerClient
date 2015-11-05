@@ -33,7 +33,9 @@ namespace Anothar.OpenTripPlannerClient
         public static String DefaultConnectionUrl { get; set; }
 
 
-        public RoutersAPI Routers { get { return new RoutersAPI(_client); } }
+        public RoutersAPI Routers => new RoutersAPI(_client);
+
+        public PlannerResourceAPI Planner => new PlannerResourceAPI(_client);
 
         public void Dispose()
         {

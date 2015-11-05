@@ -13,7 +13,7 @@ namespace Anothar.OpenTripPlannerClient.Tests
     [SetUpFixture]
     public class SetUpClass
     {
-        public const int Port = 13114;
+        public const int Port = 13001;
         private Process _process;
 
         /// <summary>
@@ -23,11 +23,13 @@ namespace Anothar.OpenTripPlannerClient.Tests
         public void StartOTP()
         {
             var path =Path.Combine(Path.GetFullPath(Environment.CurrentDirectory),"Data");
+            var graphsFolder = Path.Combine(path, "Graphs");
             //starting OTP
             _process=Process.Start(new ProcessStartInfo
             {
                 WorkingDirectory = path,
-                Arguments = $"-Xmx1G -jar otp-0.18.0.jar --build \"{path}\" --port {Port} --inMemory",
+                Arguments = $"-Xmx1G -jar otp-0.18.0.jar --graphs \"{graphsFolder}\""+
+                $" --router EastGermany --server --port {Port}",
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 FileName= "java"
